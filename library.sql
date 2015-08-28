@@ -2,8 +2,8 @@
 -- version 4.4.10
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:8889
--- Generation Time: Aug 27, 2015 at 06:14 AM
+-- Host: localhost
+-- Generation Time: Aug 28, 2015 at 04:03 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -97,6 +97,18 @@ CREATE TABLE `books` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `checkouts`
+--
+
+CREATE TABLE `checkouts` (
+  `patron_id` int(11) DEFAULT NULL,
+  `copy_id` int(11) DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `copies`
 --
 
@@ -104,6 +116,17 @@ CREATE TABLE `copies` (
   `id` bigint(20) unsigned NOT NULL,
   `count` int(11) DEFAULT NULL,
   `book_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patrons`
+--
+
+CREATE TABLE `patrons` (
+  `name` varchar(255) DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -125,9 +148,23 @@ ALTER TABLE `books`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `checkouts`
+--
+ALTER TABLE `checkouts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `copies`
 --
 ALTER TABLE `copies`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `patrons`
+--
+ALTER TABLE `patrons`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
@@ -146,9 +183,19 @@ ALTER TABLE `authors`
 ALTER TABLE `books`
   MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=76;
 --
+-- AUTO_INCREMENT for table `checkouts`
+--
+ALTER TABLE `checkouts`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `copies`
 --
 ALTER TABLE `copies`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `patrons`
+--
+ALTER TABLE `patrons`
   MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

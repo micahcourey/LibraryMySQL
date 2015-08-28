@@ -10,7 +10,7 @@
     require_once "src/Author.php";
     require_once "src/Copy.php";
 
-    $server = 'mysql:host=localhost; dbname=library_test';
+    $server = 'mysql:host=localhost:8889; dbname=library_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -219,7 +219,7 @@
             $id = null;
             $test_book = new Book($title, $id);
             $test_book->save();
-        
+
             $test_book_id = $test_book->getId();
 
             $count = 1;
